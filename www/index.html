@@ -21,13 +21,13 @@
 
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
-        /*function teste(){
+        function teste(){
           setInterval(function(){
 
             navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
             },15000);
-        }*/
+        }
         cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('EVENT', teste);
           /* Trata notificacoes (Funcionando somente no Android) */
