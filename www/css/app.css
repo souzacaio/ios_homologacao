@@ -1,0 +1,80 @@
+/* Your app styles here */
+
+.login-art{
+
+    color: rgb(104, 140, 192);
+    margin-left: 7px;
+
+}
+
+.login-art-topo{
+
+    color: rgb(104, 140, 192);
+    margin-left: 5px;
+
+}
+
+
+.login-art2{
+
+    padding-top: 132px;
+
+}
+
+.login-art3{
+
+    font-size: 12px;
+    margin-left: 148px;
+    margin-right: 8px;
+
+}
+
+.logoimg{
+
+    width: 51%;            
+
+}
+
+.placaimg{
+
+    margin: 0 0 0 116px;
+    display:none;
+
+}
+
+.l_multiusu{
+
+    margin-top: 119px;
+
+}
+
+.login_main{
+
+
+    margin-left: 26px;
+    margin-right: 9px;
+
+}
+
+@media screen and (min-width: 321px) and (max-width: 360px){
+
+    .login-art3{
+
+        font-size: 12px;
+        margin-left: 172px;
+        margin-right: 0px;
+    }
+
+}
+
+
+@media only screen and (min-width: 411px) and (max-width: 411px){
+
+    .login-art3{
+
+        font-size: 12px;
+        margin-left: 172px;
+        margin-right: 0px;
+    }
+
+}
