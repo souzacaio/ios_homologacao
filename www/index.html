@@ -28,8 +28,13 @@
 
             },15000);
         }
-        cordova.plugins.backgroundMode.moveToBackground();
-        cordova.plugins.backgroundMode.on('enable', teste);
+
+        cordova.plugins.backgroundMode.isScreenOff(function(bool) {
+          teste(); alert('yess');
+         });
+
+        
+       // cordova.plugins.backgroundMode.on('enable', teste);
           /* Trata notificacoes (Funcionando somente no Android) */
          //registrar.setupPush();
 
