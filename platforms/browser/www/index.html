@@ -30,6 +30,7 @@
             },15000);
         }*/
 
+        cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('activate', function() {
 
             //cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
