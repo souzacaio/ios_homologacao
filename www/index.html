@@ -22,13 +22,7 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        /*function teste(){
-          setInterval(function(){
-
-            navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
-
-            },15000);
-        }*/
+        
 
         cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('activate', function() {
@@ -38,24 +32,11 @@
 
                 navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
-            },5000);
+            },15000);
             
         });
         
-
-
-        
-       // cordova.plugins.backgroundMode.on('enable', teste);
-          /* Trata notificacoes (Funcionando somente no Android) */
-         //registrar.setupPush();
-
-         /* Grava geolocation do usuario */
-        /* setInterval(function(){
-
-            navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
-
-         },15000);
-         registrar.setupPush();*/
+        // registrar.setupPush();
       
     }
 
