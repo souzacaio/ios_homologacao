@@ -31,9 +31,9 @@
         }*/
 
         cordova.plugins.backgroundMode.enable();
-        cordova.plugins.backgroundMode.on('enable', function() {
+        /*cordova.plugins.backgroundMode.on('activate', function() {
 
-            //cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+           
            
             setInterval(function(){
 
@@ -41,6 +41,19 @@
 
             },5000);
             
+        });*/
+        cordova.plugins.backgroundMode.isScreenOff(function(bool) {
+           
+
+          setInterval(function(){
+
+            navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
+
+            },5000);
+
+
+
+
         });
 
 
