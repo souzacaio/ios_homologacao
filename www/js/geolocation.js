@@ -34,8 +34,8 @@
     };
     
     function onError(error) {
-       /* alert('code: '    + error.code    + '\n' +
+        alert('code: '    + error.code    + '\n' +
                 'message: ' + error.message + '\n');
 
-                $('#loginemail').val('teeste2'+error.message );*/
+    
     }
