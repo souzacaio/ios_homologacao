@@ -46,6 +46,7 @@
         </plugin>
         <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
         <plugin name="cordova-plugin-globalization" source="npm" spec="~1.0.3" />
+        <plugin name="cordova-plugin-background-mode" spec="https://github.com/katzer/cordova-plugin-background-mode.git" />
     </platform>
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
@@ -132,5 +133,4 @@
         <allow-intent href="itms-apps:*" />
         <resource-file src="GoogleService-Info.plist" />
     </platform>
-    <plugin name="cordova-plugin-background-mode" spec="https://github.com/katzer/cordova-plugin-background-mode.git" />
 </widget>
