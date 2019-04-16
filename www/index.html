@@ -21,6 +21,7 @@
 
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
+
         /*function teste(){
           setInterval(function(){
 
@@ -29,11 +30,11 @@
             },15000);
         }*/
 
-
-
         cordova.plugins.backgroundMode.on('activate', function() {
-          cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-          navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
+          
+            cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+            navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
+            
         });
 
 

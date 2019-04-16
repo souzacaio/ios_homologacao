@@ -21,7 +21,7 @@
                         },
 
                 success:function(r){
-    
+                    app.dialog.alert('deu certo');
                     
                 },
                 error:function(r){
