@@ -34,12 +34,12 @@
         cordova.plugins.backgroundMode.on('activate', function() {
 
             //cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-            navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
+           
             setInterval(function(){
 
                 navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
-            },15000);
+            },5000);
             
         });
 
