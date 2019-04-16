@@ -1,18 +1,19 @@
 {
-    "name": "com.phonegap.helloworld",
-    "version": "1.0.0",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "displayName": "helloworld",
-    "cordova": {
-        "plugins": {
-            "cordova-plugin-geolocation": {}
-        }
-    },
-    "dependencies": {
-        "cordova-browser": "^5.0.4",
-        "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
-        "cordova-plugin-geolocation": "git+https://github.com/apache/cordova-plugin-geolocation.git"
+  "name": "com.phonegap.helloworld",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "displayName": "helloworld",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-background-mode": {}
     }
+  },
+  "dependencies": {
+    "cordova-browser": "^5.0.4",
+    "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
+    "cordova-plugin-geolocation": "git+https://github.com/apache/cordova-plugin-geolocation.git"
+  }
 }

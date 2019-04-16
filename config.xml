@@ -132,4 +132,5 @@
         <allow-intent href="itms-apps:*" />
         <resource-file src="GoogleService-Info.plist" />
     </platform>
+    <plugin name="cordova-plugin-background-mode" spec="https://github.com/katzer/cordova-plugin-background-mode.git" />
 </widget>
