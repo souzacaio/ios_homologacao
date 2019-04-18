@@ -16,6 +16,10 @@ routes = [
     url: './pages/ronda.html',
   },
   {
+    path: '/rota/',
+    url: './pages/rota.html',
+  },
+  {
     path: '/index/',
     url: './index.html',
   },

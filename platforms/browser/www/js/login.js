@@ -51,6 +51,7 @@ let logar = () => {
                 
             },
             error:function(r){
+                app.dialog.close();
                 app.dialog.alert('Erro contate o administrador do sistema.');
             }
     })
