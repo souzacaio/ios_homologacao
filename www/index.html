@@ -17,6 +17,10 @@
   <script src="js/login.js"></script>
   <script src="js/ronda.js"></script>
   <script src="js/geolocation.js"></script>
+
+  <!-- Google api -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPp7NTXYo31kst8MM7mnGEAsNkl_FTCiU" type="text/javascript"></script>	
+
   <script>
 
       document.addEventListener("deviceready", onDeviceReady, false);
@@ -36,13 +40,13 @@
             
         });
         
-        // registrar.setupPush();
+        //registrar.setupPush();
       
     }
 
   </script>
 </head>
-<body>
+<body  onload="initialize()">
 
 <div id="app">
   <div class="view view-main safe-areas">
@@ -141,7 +145,7 @@
             </div>
             <div class="page-content">
               <div class="block">
-                <a href="/Rotas/">Rotas</a>
+                <a href="/ronda/">Ronda</a>
               </div>
               <div class="block">
                   <a href="/about/">Sobre</a>
@@ -169,6 +173,7 @@
 
 <!-- Your custom app scripts -->
 <script src="js/app.js"></script>
+
 
 </body>
 </html>

@@ -21,11 +21,11 @@
                         },
 
                 success:function(r){
-                    app.dialog.alert('deu certo');
+                    //app.dialog.alert('deu certo');
                     
                 },
                 error:function(r){
-                    app.dialog.alert('Erro ao gravar localização.');
+                   // app.dialog.alert('Erro ao gravar localização.');
                 }
         })
 
@@ -34,8 +34,18 @@
     };
     
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-                'message: ' + error.message + '\n');
+        /*alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');*/
 
     
     }
+
+    function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      }

@@ -12,6 +12,10 @@ routes = [
     url: './pages/form.html',
   },
   {
+    path: '/ronda/',
+    url: './pages/ronda.html',
+  },
+  {
     path: '/index/',
     url: './index.html',
   },
