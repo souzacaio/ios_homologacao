@@ -23,22 +23,20 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        
-
         cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('activate', function() {
 
             cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-            setInterval(function(){
+           // navigator.geolocation.watchPosition(GravarGeolocation, onError);
+            /*setInterval(function(){
 
                 navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
-            },15000);
+            },15000);*/
             
         });
         
         //registrar.setupPush();
-      
     }
 
   </script>

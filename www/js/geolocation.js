@@ -31,7 +31,7 @@
     }
 
     function carrega_mapa() {
-        navigator.geolocation.watchPosition(mapa,mapa_erro);
+        navigator.geolocation.watchPosition(mapa,mapa_erro,{ timeout: 30000 });
     }
 
     function mapa_erro() {
@@ -40,7 +40,6 @@
 
     function mapa(position) {
 
-        alert(1);
         var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
         var map = new google.maps.Map(document.getElementById('map_canvas'), {
           zoom: 18,
@@ -52,4 +51,6 @@
           map: map,
           title: ''
         });
+
+        GravarGeolocation(position);
     }
