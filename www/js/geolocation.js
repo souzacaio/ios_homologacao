@@ -1,14 +1,6 @@
 
     var GravarGeolocation = function(position) {
-        /*alert('Latitude: '            + position.coords.latitude          + '\n' +
-                'Longitude: '         + position.coords.longitude         + '\n' +
-                'Altitude: '          + position.coords.altitude          + '\n' +
-                'Accuracy: '          + position.coords.accuracy          + '\n' +
-                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                'Heading: '           + position.coords.heading           + '\n' +
-                'Speed: '             + position.coords.speed             + '\n' +
-                'Timestamp: '         + position.timestamp                + '\n');*/
-
+      
             $.ajax({
 
                 url:localStorage.getItem('DOMINIO')+'appweb/app_admin.php',
@@ -29,8 +21,6 @@
                 }
         })
 
-
-
     };
     
     function onError(error) {
@@ -40,12 +30,26 @@
     
     }
 
-    function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
-      }
+    function carrega_mapa() {
+        navigator.geolocation.watchPosition(mapa,mapa_erro);
+    }
+
+    function mapa_erro() {
+        app.dialog.alert('Erro ao gerar localização');
+    }
+
+    function mapa(position) {
+
+        alert(1);
+        var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+          zoom: 18,
+          center: myLatLng
+        });
+      
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: ''
+        });
+    }
