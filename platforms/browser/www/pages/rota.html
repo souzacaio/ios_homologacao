@@ -2,7 +2,7 @@
       <div class="navbar">
         <div class="navbar-inner sliding">
           <div class="left">
-            <a href="#" class="link back">
+            <a href="#" class="link back" >
               <i class="icon icon-back"></i>
               <span class="ios-only">Back</span>
             </a>
@@ -11,14 +11,18 @@
         </div>
       </div>
       <div class="page-content">
-          <div class="block-title">Rota</div>
+          <div class="block-title">Lista de Rotas</div>
           <div class="block">
+              <div class="list links-list">
+                  <ul id="carrega_rotas">
+                  </ul>
+              </div>
               <p class="row">
-                  <button class="col button button-fill color-green" onclick="carrega_mapa()">Inicializar Ronda</button>
+                  <button class="col button button-fill color-green" onclick="initLocationProcedure()">Inicializar Ronda</button>
               </p>
           </div>
-          <div class="block-title">Mapa</div>
-          <div class="main_mapa" style="margin: 0 14px 0 14px;">
+          <div class="main_mapa" style="margin: 0 14px 0 14px;display:none">
+              <div class="block-title">Mapa</div>
               <div id="map_canvas" style="width:100%; height:68%"></div>
           </div>
       </div>

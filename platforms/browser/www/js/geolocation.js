@@ -1,55 +1,6 @@
 
 
-    let carrega_ronda = () => {
-
-        let html      = '';
-        let x         = 0;
-        let contador  = 1;
-
-        $.ajax({
-
-            url:localStorage.getItem('DOMINIO')+'appweb/app_admin.php',
-            type:'POST',
-            beforeSend: function(){
-                app.dialog.preloader()
-            },
-            dataType:'JSON',
-            data:{
-                tipo:'carrega_rondas',
-                id_condominio:localStorage.getItem('id_condominio')
-            },
-            success:function(r){
-                app.dialog.close();
-                $('#carrega_rondas').html('');
-                for(x in r){
-                    
-                    html += '<li>'+
-                                '<a href="/rota/" class="item-link item-content">'+
-                                '<div class="item-inner">'+
-                                '<div class="item-title-row">'+
-                                    '<div class="item-title"><strong>Ronda '+contador+'</strong></div>'+
-                                    '<div class="item-after" style="margin-left: 159px;">'+
-                                        '<i class="icon icon-fill f7-icons if-not-md">sort_up<span class="badge color-red">'+r[x].qtd_rotas+'</span></i>'+
-                                    '</div>'+
-                                    '<div class="item-after">'+r[x].horario.substr(0,5)+'</div>'+
-                                    '</div>'+
-                                    '<div class="item-subtitle">'+r[x].descricao+'</div>'+
-                                    '<div class="item-text">Parar em todos os pontos. Verificar requisitos minimos do quadra de avisos. Em casos atipicos.</div>'+
-                                '</div>'+
-                                '</a>'+
-                            '</li>';
-                            contador += 1;    
-                }
-
-                $('#carrega_rondas').append(html);
-                
-            },
-            error:function(r){
-                app.dialog.close();
-
-            }
-        })
-    }
+   
 
 
     var GravarGeolocation = function(position) {  
@@ -82,32 +33,73 @@
     }
 
 
-    function carrega_mapa() {
-        navigator.geolocation.watchPosition(mapa,mapa_erro,{ timeout: 30000 });
+    var map,
+        currentPositionMarker,
+        mapCenter = new google.maps.LatLng(40.700683, -73.925972),
+        map;
+
+    function initializeMap()
+    {
+        map = new google.maps.Map(document.getElementById('map_canvas'), {
+            zoom: 18,
+            center: mapCenter,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
     }
 
-
-    function mapa_erro() {
-        app.dialog.alert('Erro ao gerar localização');
+    function locError(error) {
+        // the current position could not be located
+        alert("The current position could not be found!");
     }
 
-
-    function mapa(position) {
-
-        var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-        var map = new google.maps.Map(document.getElementById('map_canvas'), {
-          zoom: 18,
-          center: myLatLng
+    function setCurrentPosition(pos) {
+        currentPositionMarker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(
+                pos.coords.latitude,
+                pos.coords.longitude
+            ),
+            title: "Current Position"
         });
-      
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: ''
-        });
-
-        GravarGeolocation(position);
+        map.panTo(new google.maps.LatLng(
+                pos.coords.latitude,
+                pos.coords.longitude
+            ));
     }
 
+    function displayAndWatch(position) {
+        // set current position
+        setCurrentPosition(position);
+        // watch position
+        watchCurrentPosition();
+    }
 
-    
+    function watchCurrentPosition() {
+        var positionTimer = navigator.geolocation.watchPosition(
+            function (position) {
+                setMarkerPosition(
+                    currentPositionMarker,
+                    position
+                );
+                GravarGeolocation(position);
+            });
+    }
+
+    function setMarkerPosition(marker, position) {
+        marker.setPosition(
+            new google.maps.LatLng(
+                position.coords.latitude,
+                position.coords.longitude)
+        );
+    }
+
+    function initLocationProcedure() {
+        initializeMap();
+        $('.main_mapa').show();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(displayAndWatch, locError);
+        } else {
+            alert("Your browser does not support the Geolocation API");
+        }
+    }
+
