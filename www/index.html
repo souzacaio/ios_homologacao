@@ -23,37 +23,27 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        var db = window.sqlitePlugin.openDatabase({
-          name: 'my.db',
-          location: 'default',
-          androidDatabaseProvider: 'system'
+        var db = sqlitePlugin.openDatabase('mydb.db', '1.0', '', 1);
+        db.transaction(function (txn) {
+          txn.executeSql('SELECT 42 AS `answer`', [], function (tx, res) {
+           alert(res.rows.item(0)); // {"answer": 42}
+          });
         });
+                cordova.plugins.backgroundMode.enable();
+                cordova.plugins.backgroundMode.on('activate', function() {
 
-       db.transaction(function(tx) {
-          tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
-          tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
-          tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
-        }, function(error) {
-            alert(1)
-        }, function() {
-          alert(2)
-        });
+                    cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+                  // navigator.geolocation.watchPosition(GravarGeolocation, onError);
+                    /*setInterval(function(){
 
-        cordova.plugins.backgroundMode.enable();
-        cordova.plugins.backgroundMode.on('activate', function() {
+                        navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
-            cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-           // navigator.geolocation.watchPosition(GravarGeolocation, onError);
-            /*setInterval(function(){
-
-                navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
-
-            },15000);*/
-            
-        });
-        
-        //registrar.setupPush();
-    }
+                    },15000);*/
+                    
+                });
+                
+                //registrar.setupPush();
+            }
 
   </script>
 </head>
