@@ -180,7 +180,7 @@
   "cordova-plugin-sqlite-2": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-sqlite-2"
+      "id": "cordova-plugin-sqlite-2@^1.0.6"
     },
     "is_top_level": true,
     "variables": {}
