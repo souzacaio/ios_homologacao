@@ -9,13 +9,15 @@
     "plugins": {
       "cordova-plugin-geolocation": {},
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-sqlite-2": {}
+      "cordova-plugin-sqlite-2": {},
+      "cordova-plugin-sqlite": {}
     }
   },
   "dependencies": {
     "cordova-browser": "^5.0.4",
     "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
     "cordova-plugin-geolocation": "git+https://github.com/apache/cordova-plugin-geolocation.git",
+    "cordova-plugin-sqlite": "^1.0.3",
     "cordova-plugin-sqlite-2": "^1.0.6"
   }
 }

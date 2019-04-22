@@ -39,6 +39,9 @@
     },
     "cordova-plugin-sqlite-2": {
       "PACKAGE_NAME": "com.phonegap.controlcondoadmin"
+    },
+    "cordova-plugin-sqlite": {
+      "PACKAGE_NAME": "com.phonegap.controlcondoadmin"
     }
   },
   "dependent_plugins": {
