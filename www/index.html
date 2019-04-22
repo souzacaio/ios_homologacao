@@ -81,6 +81,8 @@
                 <ul>
                   <li>
                     <a href="#" class="item-link list-button login-button" onclick="logar()">Entrar</a>
+                    <button  id="go_feed"  onclick="criar()">cria banco</button>
+                      <button id="go_feed"  onclick="consulta()">consulta banco</button>
                   </li>
                 </ul>
                 <div class="block-footer">A aplicação definitiva para o seu condomínio.<br>Clique em "Entrar" para acessar.</div>
@@ -171,6 +173,48 @@
 
 <!-- Google api -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKL05q-6wQwa4lpkmLBKD91y2IVJNHgus" type="text/javascript"></script>	
+
+<script>
+
+      function consulta(){
+        alert(5);
+        db.transaction(function(tx) {
+          tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
+            console.log('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
+            alert(1);
+          }, function(tx, error) {
+            console.log('SELECT error: ' + error.message);
+            alert(2);
+          });
+        });
+
+
+
+
+        
+      }
+
+
+      function criar(){
+
+        alert(6);
+            db.transaction(function(tx) {
+              tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
+              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
+              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
+            }, function(error) {
+              console.log('Transaction ERROR: ' + error.message);
+              alert(1);
+            }, function() {
+              console.log('Populated database OK');
+              alert(2);
+            });
+        
+      }
+
+      
+
+</script>
 
 </body>
 </html>

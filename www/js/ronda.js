@@ -100,7 +100,7 @@ let carrega_rota = (id_ronda) => {
                 app.dialog.close();
                 for(x in r){
                 
-                    html += '<li><a href="#" class="">Rota '+r[x].descricao+'</a></li>';
+                    html += '<li><a href="/pontos/" onclick="carrega_ponto('+r[x].id_ronda_sub+')" class="">Rota '+r[x].descricao+'</a></li>';
                     contador += 1;    
                 }
                 
@@ -113,6 +113,64 @@ let carrega_rota = (id_ronda) => {
             app.dialog.close();
 
         }
+    })
+}
+
+
+let carrega_ponto = (id_ronda_sub) => {
+
+    let html      = '';
+    let texto     = '';
+    let x         = 0;
+    let tamanho   = 0;
+    let contador  = 1;
+   
+    $.ajax({
+
+        url:localStorage.getItem('DOMINIO')+'appweb/app_admin.php',
+        type:'POST',
+        beforeSend: function(){
+            app.dialog.preloader()
+        },
+        dataType:'JSON',
+        data:{
+            tipo:'carrega_pontos',
+            id_ronda_sub:id_ronda_sub
+        },
+        success:function(r){
+            app.dialog.close();
+            tamanho = r.length;
+
+            for(x in r){
+
+                    html += '<li class="item-content">'+
+                                '<div class="item-media"><img src="https://cdn6.aptoide.com/imgs/e/b/b/ebb413bdbd2d1169d012599072e454fc_icon.png?w=240" width="44"></div>'+
+                                    '<div class="item-inner">'+
+                                        '<div class="item-title-row">'+
+                                            '<div class="item-title"><strong style="color:#034eb7">'+initcap(r[x].descricao)+'</strong></div>'+
+                                            '</div>'+
+                                    '<div class="item-subtitle">Tempo Espera - '+r[x].tempo_espera+' Minutos </div>'+
+                                '</div>'+
+                            '</li>';    
+            }
+
+            if(tamanho > 1){
+
+                texto = ' Pontos';
+
+            }else{
+
+                texto = ' Ponto';
+
+            }
+
+            $('#carrega_pontos').html(html);
+            $('.qtdpontos').html(tamanho+texto);
+                       
+        },
+        error:function(r){
+            app.dialog.close();
+        },
     })
 }
 

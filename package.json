@@ -8,12 +8,14 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-geolocation": {},
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-background-mode": {},
+      "cordova-sqlite-storage": {}
     }
   },
   "dependencies": {
     "cordova-browser": "^5.0.4",
     "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
-    "cordova-plugin-geolocation": "git+https://github.com/apache/cordova-plugin-geolocation.git"
+    "cordova-plugin-geolocation": "git+https://github.com/apache/cordova-plugin-geolocation.git",
+    "cordova-sqlite-storage": "git+https://github.com/xpbrew/cordova-sqlite-storage.git"
   }
 }
