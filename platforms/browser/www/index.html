@@ -23,21 +23,21 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-              cordova.plugins.backgroundMode.enable();
-                cordova.plugins.backgroundMode.on('activate', function() {
+        cordova.plugins.backgroundMode.enable();
+        cordova.plugins.backgroundMode.on('activate', function() {
 
-                    cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-                  // navigator.geolocation.watchPosition(GravarGeolocation, onError);
-                    /*setInterval(function(){
+            cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+           // navigator.geolocation.watchPosition(GravarGeolocation, onError);
+            /*setInterval(function(){
 
-                        navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
+                navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
 
-                    },15000);*/
-                    
-                });
-                
-                //registrar.setupPush();
-            }
+            },15000);*/
+            
+        });
+        
+        //registrar.setupPush();
+    }
 
   </script>
 </head>
@@ -81,8 +81,6 @@
                 <ul>
                   <li>
                     <a href="#" class="item-link list-button login-button" onclick="logar()">Entrar</a>
-                    <button  id="go_feed"  onclick="criar()">cria banco</button>
-                      <button id="go_feed"  onclick="consulta()">consulta banco</button>
                   </li>
                 </ul>
                 <div class="block-footer">A aplicação definitiva para o seu condomínio.<br>Clique em "Entrar" para acessar.</div>
@@ -177,47 +175,35 @@
 <script>
 
       function consulta(){
-                  
 
-            var db = window.sqlitePlugin.openDatabase({name: "my.db"});
-    
-              db.transaction(function(tx) {
-                tx.executeSql('DROP TABLE IF EXISTS test_table');
-                tx.executeSql('CREATE TABLE IF NOT EXISTS test_table (id integer primary key, data text, data_num integer)');
-
-                // demonstrate PRAGMA:
-                db.executeSql("pragma table_info (test_table);", [], function(res) {
-                      $('#loginemail').val("tessssssste1") ;
-                });
-
-                tx.executeSql("INSERT INTO test_table (data, data_num) VALUES (?,?)", ["test", 100], function(tx, res) {
-                  $('#loginemail').val("tessssssste2") ;
-                
-
-                  db.transaction(function(tx) {
-                    tx.executeSql("select count(id) as cnt from test_table;", [], function(tx, res) {
-                      $('#loginemail').val("tessssssste3") ;
-                    });
-                  });
-
-                }, function(e) {
-                  $('#loginemail').val("erro") ;
-                });
+        db.transaction(function(tx) {
+          tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
+            console.log('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
+          }, function(tx, error) {
+            console.log('SELECT error: ' + error.message);
           });
+        });
+
+
+
+
         
       }
 
 
       function criar(){
 
-        var db = sqlitePlugin.openDatabase('mydb.db', '1.0', '', 1);
-            db.transaction(function (txn) {
-              txn.executeSql('SELECT 42 AS `answer`', [], function (tx, res) {
-                alert(res.rows.item(0)); // {"answer": 42}
-              });
-            });
 
-       
+            db.transaction(function(tx) {
+              tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
+              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
+              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
+            }, function(error) {
+              console.log('Transaction ERROR: ' + error.message);
+            }, function() {
+              console.log('Populated database OK');
+            });
+        
       }
 
       
