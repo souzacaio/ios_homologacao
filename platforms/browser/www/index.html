@@ -23,13 +23,7 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        var db = sqlitePlugin.openDatabase('mydb.db', '1.0', '', 1);
-        db.transaction(function (txn) {
-          txn.executeSql('SELECT 42 AS `answer`', [], function (tx, res) {
-           alert(res.rows.item(0)); // {"answer": 42}
-          });
-        });
-                cordova.plugins.backgroundMode.enable();
+              cordova.plugins.backgroundMode.enable();
                 cordova.plugins.backgroundMode.on('activate', function() {
 
                     cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
@@ -183,13 +177,30 @@
 <script>
 
       function consulta(){
-        
+                  
 
 
-       
-        alert(localStorage.getItem('cordenadas'))
+        var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024); 
+         var msg; 
+    
+         db.transaction(function (tx) { 
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)'); 
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "foobar")'); 
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "logmsg")'); 
+            msg = '<p>Log message created and row inserted.</p>'; 
+         })
 
-
+         db.transaction(function (tx) { 
+            tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) { 
+               var len = results.rows.length, i; 
+               msg = "<p>Found rows: " + len + "</p>"; 
+      
+               for (i = 0; i < len; i++) { 
+                  msg = "<p><b>" + results.rows.item(i).log + "</b></p>"; 
+                 alert(msg);
+               } 
+            }, null); 
+         }); 
         
       }
 
@@ -197,8 +208,6 @@
       function criar(){
 
        
-        localStorage.setItem('cordenadas','testando sera que salva ?')
-        
       }
 
       
