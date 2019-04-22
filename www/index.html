@@ -23,10 +23,11 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        db = window.sqlitePlugin.openDatabase({
-              name: 'my.db',
-              location: 'default',
-       });
+        var db = window.sqlitePlugin.openDatabase({
+          name: 'my.db',
+          location: 'default',
+          androidDatabaseProvider: 'system'
+        });
 
        db.transaction(function(tx) {
           tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
