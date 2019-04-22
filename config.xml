@@ -133,5 +133,5 @@
         <allow-intent href="itms-apps:*" />
         <resource-file src="GoogleService-Info.plist" />
     </platform>
-    <plugin name="cordova-sqlite-storage" spec="https://github.com/xpbrew/cordova-sqlite-storage.git" />
+    <plugin name="cordova-sqlite-storage"  spec="~1.2.1" />
 </widget>
