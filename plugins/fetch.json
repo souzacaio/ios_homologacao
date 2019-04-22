@@ -180,7 +180,7 @@
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/xpbrew/cordova-sqlite-storage.git"
+      "id": "cordova-sqlite-storage"
     },
     "is_top_level": true,
     "variables": {}

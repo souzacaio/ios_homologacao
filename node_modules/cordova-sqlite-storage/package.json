@@ -1,24 +1,27 @@
 {
-  "_from": "git+https://github.com/xpbrew/cordova-sqlite-storage.git",
-  "_id": "cordova-sqlite-storage@3.2.1-dev",
+  "_from": "cordova-sqlite-storage",
+  "_id": "cordova-sqlite-storage@3.2.0",
   "_inBundle": false,
-  "_integrity": "",
+  "_integrity": "sha512-++qDuswavJ6k9zvoG2rAGmkvvzBO0sUWwh2Ccs64/Fj+CV8pmED76crq3/Lj2myDFqwuJ1LnMIlmXIlb5dAaxg==",
   "_location": "/cordova-sqlite-storage",
   "_phantomChildren": {},
   "_requested": {
-    "type": "git",
-    "raw": "https://github.com/xpbrew/cordova-sqlite-storage.git",
-    "rawSpec": "https://github.com/xpbrew/cordova-sqlite-storage.git",
-    "saveSpec": "git+https://github.com/xpbrew/cordova-sqlite-storage.git",
-    "fetchSpec": "https://github.com/xpbrew/cordova-sqlite-storage.git",
-    "gitCommittish": null
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-sqlite-storage",
+    "name": "cordova-sqlite-storage",
+    "escapedName": "cordova-sqlite-storage",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/xpbrew/cordova-sqlite-storage.git#dbe378d540afa36fd962055e2c3fb6e99b579da0",
-  "_spec": "https://github.com/xpbrew/cordova-sqlite-storage.git",
+  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-3.2.0.tgz",
+  "_shasum": "ef7c71c4de076b99b6e872d9f0a388656bf7f843",
+  "_spec": "cordova-sqlite-storage",
   "_where": "C:\\Users\\Diego Ramos\\Desktop\\ios teste homologacao\\myApp",
   "author": {
     "name": "various"
@@ -66,5 +69,5 @@
     "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
     "prepare-spec": "node scripts/prepareSpec.js"
   },
-  "version": "3.2.1-dev"
+  "version": "3.2.0"
 }
