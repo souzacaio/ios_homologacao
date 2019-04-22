@@ -23,6 +23,21 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
+        db = window.sqlitePlugin.openDatabase({
+              name: 'my.db',
+              location: 'default',
+       });
+
+       db.transaction(function(tx) {
+          tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
+          tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
+          tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
+        }, function(error) {
+            alert(1)
+        }, function() {
+          alert(2)
+        });
+
         cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('activate', function() {
 
@@ -197,7 +212,9 @@
 
       function criar(){
 
-        alert(6);
+        var db = null;
+
+      
             db.transaction(function(tx) {
               tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
               tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
