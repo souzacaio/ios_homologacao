@@ -193,18 +193,11 @@
 <script>
 
       function consulta(){
-        alert(5);
-        db.transaction(function(tx) {
-          tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
-            console.log('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
-            alert(1);
-          }, function(tx, error) {
-            console.log('SELECT error: ' + error.message);
-            alert(2);
-          });
-        });
+        
 
 
+       
+        alert(localStorage.getItem('cordenadas'))
 
 
         
@@ -213,20 +206,8 @@
 
       function criar(){
 
-        var db = null;
-
-      
-            db.transaction(function(tx) {
-              tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
-              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
-              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
-            }, function(error) {
-              console.log('Transaction ERROR: ' + error.message);
-              alert(1);
-            }, function() {
-              console.log('Populated database OK');
-              alert(2);
-            });
+       
+        localStorage.setItem('cordenadas','testando sera que salva ?')
         
       }
 
