@@ -32,7 +32,7 @@
         });*/
         cordova.plugins.backgroundMode.setEnabled(true);
 
-        cordova.plugins.backgroundMode.on('enable', function() {
+        cordova.plugins.backgroundMode.on('activate', function() {
 
           cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
           navigator.geolocation.watchPosition(GravarGeolocation, onError);
