@@ -23,15 +23,16 @@ let logar = () => {
 
                 app.dialog.close();
 
-                if(r.NotFound == 'NotFound'){ /* Usuario não Usuaio */
+                if(r.NotFound == 'NotFound'){ /* Usuario não encontrado */
 
                     app.dialog.alert('Usuario não encontrado.');
 
                 }else
                 if(r.length == 1){ /* Mono Usuario */
 
+                    localStorage.setItem('id_condominio',r[x].id_condominio);
                     carrega_info_usuario();
-
+                    
                 }else
                 if(r.length > 1){ /* Multi Usuario */
 
@@ -41,14 +42,11 @@ let logar = () => {
                     }
                     
                     $('#l_condominios').html('');
-                    $('#l_condominios').html('<option>Selecione uma opção ...</option>'+html);
+                    $('#l_condominios').html('<option value="">Selecione uma opção ...</option>'+html);
                     $('.abrirmultiuser').click();   
                        
                 }
-
-                /* Preenche sessao com dados do usuario */
-                localStorage.setItem('id_condominio',r[x].id_condominio);
-                
+    
             },
             error:function(r){
                 app.dialog.close();
@@ -60,7 +58,7 @@ let logar = () => {
 
 let carrega_info_usuario = () => {
 
-    let id_condominio = $('#l_condominios').val() == '' ? $('#l_condominios').val():localStorage.getItem('id_condominio');
+    let id_condominio = $('#l_condominios').val() != null ? $('#l_condominios').val():localStorage.getItem('id_condominio');
     let usuario       = $('#loginemail').val();
     let senha         = $('#loginsenha').val();
 
@@ -79,12 +77,15 @@ let carrega_info_usuario = () => {
              },
         dataType:'JSON',
         success:function(r){
+
             app.dialog.close();
             /* Carrega dados sessao */
             localStorage.setItem('nome_morador',r[0].nome);
             localStorage.setItem('id_usuario_condominio',r[0].id_usuario_condominio);
+            localStorage.setItem('id_condominio',r[0].id_condominio);
 
             /* Carrega dados html */
+            
             $('.m_nome_morador').text(initcap(r[0].nome));
             $('#go_feed').get(0).click();
             $('.l_multiusu_close').get(0).click();
@@ -92,8 +93,9 @@ let carrega_info_usuario = () => {
 
                 carreta_grafico();
 
-            },500);
-           
+            },500);     
+            
+            navigator.geolocation.watchPosition(GravarGeolocation, onError); 
 
         },
         error:function(r){
@@ -106,6 +108,9 @@ let carrega_info_usuario = () => {
 let logOut = () => {
 
     window.location = "index.html";
+    localStorage.removeItem('id_condominio');
+    localStorage.removeItem('nome_morador');
+    localStorage.removeItem('id_usuario_condominio');
 
 }
 

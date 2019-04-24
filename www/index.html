@@ -26,17 +26,12 @@
         cordova.plugins.backgroundMode.enable();
         cordova.plugins.backgroundMode.on('activate', function() {
 
-            cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-           // navigator.geolocation.watchPosition(GravarGeolocation, onError);
-            /*setInterval(function(){
-
-                navigator.geolocation.getCurrentPosition(GravarGeolocation, onError);
-
-            },15000);*/
+           cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
+           navigator.geolocation.watchPosition(GravarGeolocation, onError);
             
         });
         
-        //registrar.setupPush();
+        registrar.setupPush();
     }
 
   </script>
@@ -119,7 +114,7 @@
                    </ul>
                    <div class="block">
                       <a class="col button button-fill color-green" onclick="carrega_info_usuario()">Entrar</a>
-                      <a href="/form/" id="go_feed" style="display:none" >Entrar</a>
+                      <a href="/dashboard_ronda/" id="go_feed" style="display:none" >Entrar</a>
                    </div>
                  </div>
                </div>
@@ -171,44 +166,6 @@
 
 <!-- Google api -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKL05q-6wQwa4lpkmLBKD91y2IVJNHgus" type="text/javascript"></script>	
-
-<script>
-
-      function consulta(){
-
-        db.transaction(function(tx) {
-          tx.executeSql('SELECT count(*) AS mycount FROM DemoTable', [], function(tx, rs) {
-            console.log('Record count (expected to be 2): ' + rs.rows.item(0).mycount);
-          }, function(tx, error) {
-            console.log('SELECT error: ' + error.message);
-          });
-        });
-
-
-
-
-        
-      }
-
-
-      function criar(){
-
-
-            db.transaction(function(tx) {
-              tx.executeSql('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
-              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
-              tx.executeSql('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
-            }, function(error) {
-              console.log('Transaction ERROR: ' + error.message);
-            }, function() {
-              console.log('Populated database OK');
-            });
-        
-      }
-
-      
-
-</script>
 
 </body>
 </html>

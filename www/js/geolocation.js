@@ -1,8 +1,5 @@
 
 
-   
-
-
     var GravarGeolocation = function(position) {  
         $.ajax({
 
@@ -13,7 +10,7 @@
                     longitude: position.coords.longitude,
                     id_usuario_condominio:localStorage.getItem('id_usuario_condominio'),
                     tipo:'grava_localizacao'
-                    },
+                },
 
             success:function(r){
                 //app.dialog.alert('deu certo');
@@ -81,7 +78,7 @@
                     currentPositionMarker,
                     position
                 );
-                GravarGeolocation(position);
+                //GravarGeolocation(position);
             });
     }
 

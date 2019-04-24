@@ -12,8 +12,8 @@ var app  = new Framework7({
   data: function () {
     return {
       user: {
-        firstName: 'John',
-        lastName: 'Doe',
+        firstName: 'ControlCondo',
+        lastName: 'Firstcontrol',
       },
     };
   },
@@ -32,17 +32,6 @@ var mainView = app.views.create('.view-main', {
   url: '/'
 });
 
-// Login Screen Demo
-$$('#my-login-screen .login-button').on('click', function () {
-  var username = $$('#my-login-screen [name="username"]').val();
-  var password = $$('#my-login-screen [name="password"]').val();
-
-  // Close login screen
-  app.loginScreen.close('#my-login-screen');
-
-  // Alert username and password
-  app.dialog.alert('Username: ' + username + '<br>Password: ' + password);
-});
 
 var registrar = {
 	
@@ -119,11 +108,20 @@ let  initcap = (valor) => {
 
 let loader = () => {
 
-      app.dialog.preloader();
-      setTimeout(function () {
-          app.dialog.close();
-          return true
-      }, 4000);
+    app.dialog.preloader();
+    setTimeout(function () {
+        app.dialog.close();
+        return true
+    }, 4000);
+}
+
+
+let voltar = (page) => {
+
+    setTimeout(function(){
+        $('div[data-name="'+page+'"] a')[0].click(); 
+    },700);
+
 }
 
 

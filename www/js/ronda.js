@@ -61,9 +61,9 @@ let carrega_ronda = () => {
                             contador += 1;    
                 }
                 
-                $('#carrega_rondas').append(html);
+                $('#carrega_rondas').html(html);
 
-            },500);           
+            },700);           
            
         },
         error:function(r){
@@ -93,20 +93,29 @@ let carrega_rota = (id_ronda) => {
             id_ronda:id_ronda
         },
         success:function(r){
+
+            if(r.NotFound){
+
+                app.dialog.alert('Nenhuma rota cadastrada para essa ronda.');
+                voltar('Rota');
+                
+            }else{
             
-            $('#carrega_rotas').html('');
+                $('#carrega_rotas').html('');
 
-            setTimeout(function(){
-                app.dialog.close();
-                for(x in r){
-                
-                    html += '<li><a href="/pontos/" onclick="carrega_ponto('+r[x].id_ronda_sub+')" class="">Rota '+r[x].descricao+'</a></li>';
-                    contador += 1;    
-                }
-                
-                $('#carrega_rotas').html(html);
+                setTimeout(function(){
+                    app.dialog.close();
+                    for(x in r){
+                    
+                        html += '<li><a href="/pontos/" onclick="carrega_ponto('+r[x].id_ronda_sub+')" class="">Rota '+r[x].descricao+'</a></li>';
+                        contador += 1;    
+                    }
+                    
+                    $('#carrega_rotas').html(html);
 
-            },500);           
+                },500);   
+            
+            }
            
         },
         error:function(r){
@@ -139,33 +148,43 @@ let carrega_ponto = (id_ronda_sub) => {
         },
         success:function(r){
             app.dialog.close();
-            tamanho = r.length;
 
-            for(x in r){
+            if(r.NotFound){
 
-                    html += '<li class="item-content">'+
-                                '<div class="item-media"><img src="https://cdn6.aptoide.com/imgs/e/b/b/ebb413bdbd2d1169d012599072e454fc_icon.png?w=240" width="44"></div>'+
-                                    '<div class="item-inner">'+
-                                        '<div class="item-title-row">'+
-                                            '<div class="item-title"><strong style="color:#034eb7">'+initcap(r[x].descricao)+'</strong></div>'+
-                                            '</div>'+
-                                    '<div class="item-subtitle">Tempo Espera - '+r[x].tempo_espera+' Minutos </div>'+
-                                '</div>'+
-                            '</li>';    
-            }
-
-            if(tamanho > 1){
-
-                texto = ' Pontos';
-
+                app.dialog.alert('Nenhum ponto cadastrado para essa rota.');
+                voltar('Pontos');
+                
             }else{
 
-                texto = ' Ponto';
+                tamanho = r.length;
 
-            }
+                for(x in r){
+    
+                        html += '<li class="item-content">'+
+                                    '<div class="item-media"><img src="https://cdn6.aptoide.com/imgs/e/b/b/ebb413bdbd2d1169d012599072e454fc_icon.png?w=240" width="44"></div>'+
+                                        '<div class="item-inner">'+
+                                            '<div class="item-title-row">'+
+                                                '<div class="item-title"><strong style="color:#034eb7">'+initcap(r[x].descricao)+'</strong></div>'+
+                                                '</div>'+
+                                        '<div class="item-subtitle">Tempo Espera - '+r[x].tempo_espera+' Minutos </div>'+
+                                    '</div>'+
+                                '</li>';    
+                }
+    
+                if(tamanho > 1){
+    
+                    texto = ' Pontos';
+    
+                }else{
+    
+                    texto = ' Ponto';
+    
+                }
+    
+                $('#carrega_pontos').html(html);
+                $('.qtdpontos').html(tamanho+texto);
 
-            $('#carrega_pontos').html(html);
-            $('.qtdpontos').html(tamanho+texto);
+            }  
                        
         },
         error:function(r){
