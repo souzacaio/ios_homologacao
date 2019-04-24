@@ -95,7 +95,7 @@ let carrega_info_usuario = () => {
 
             },500);     
             
-            navigator.geolocation.watchPosition(GravarGeolocation, onError); 
+            //navigator.geolocation.watchPosition(GravarGeolocation, onError); 
 
         },
         error:function(r){
