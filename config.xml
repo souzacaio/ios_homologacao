@@ -125,13 +125,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-     <!-- Set background location mode -->
-    <config-file platform="ios" target="*-Info.plist" parent="UIBackgroundModes">
-        <array>
-            <string>audio</string>
-            <string>location</string>
-        </array>
-    </config-file>
+    
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
