@@ -23,14 +23,8 @@
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady(){
 
-        //cordova.plugins.backgroundMode.enable();
-        /*cordova.plugins.backgroundMode.on('activate', function() {
-
-           cordova.plugins.backgroundMode.disableWebViewOptimizations(); 
-           navigator.geolocation.watchPosition(GravarGeolocation, onError);
-            
-        });*/
-        cordova.plugins.backgroundMode.setEnabled(true);
+        cordova.plugins.backgroundMode.enable();
+        
 
         cordova.plugins.backgroundMode.on('activate', function() {
 
